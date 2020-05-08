@@ -1,0 +1,13 @@
+server:
+  port: 7081
+spring:
+  application:
+    name: hello-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        # 服务注册附带元数据，比如版本、权重等
+        metadata:
+          version: v1
+          weight: 100

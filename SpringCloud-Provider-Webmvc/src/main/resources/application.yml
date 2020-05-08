@@ -1,0 +1,11 @@
+server:
+  port: 7083
+spring:
+  application:
+    name: webmvc-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        metadata:
+          version: v1

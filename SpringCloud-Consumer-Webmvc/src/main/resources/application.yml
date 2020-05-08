@@ -1,0 +1,25 @@
+server:
+  port: 7085
+spring:
+  application:
+    name: hello-consumer-mvc
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        # 服务注册附带元数据，比如版本、权重等
+        metadata:
+          version: v1
+          weight: 100
+# hystrix超时设置
+hystrix:
+  command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+## 超时，如果这个参数设置不好，服务端会产生ClientAbortException: java.io.IOException: Broken pipe异常，
+#客户端超时关闭连接，而服务端从远程获取到数据后回写客户端，这时客户端已经断开连接
+ribbon:
+  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 120000
+  ConnectTimeout: 5000
+hello-provider:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.xiao.springcloud.loadbalancer.ribbon.NacosWeightedRule

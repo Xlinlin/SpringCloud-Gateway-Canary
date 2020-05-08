@@ -1,0 +1,11 @@
+server:
+  port: 7082
+spring:
+  application:
+    name: hello-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        metadata:
+          version: v1
