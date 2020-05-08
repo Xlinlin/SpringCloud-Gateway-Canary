@@ -101,6 +101,7 @@ StripPrefixGatewayFilterFactory、RequestHeaderToRequestUriGatewayFilterFactory�
 * webflux 待定
   * 如何做好header的在上下文传递以及在做负载均衡的时候如何做版本负载
   
-4.参考资料
+4.参考资料<br>
 [Spring Cloud Alibaba之负载均衡组件 - Ribbon](https://blog.51cto.com/zero01/2424180)
+
 [基于springcloud gateway + nacos实现灰度发布（reactive版）](https://www.cnblogs.com/linyb-geek/p/12774014.html)
