@@ -1,6 +1,0 @@
-# Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.xiao.springcloud.loadbalancer.configure.FeignInterceptorConfigurer,\
-com.xiao.springcloud.loadbalancer.configure.GrayWebMvcConfigurer,\
-com.xiao.springcloud.loadbalancer.configure.RestTemplateConfigurer
-

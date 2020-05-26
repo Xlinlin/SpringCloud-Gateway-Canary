@@ -90,7 +90,7 @@ StripPrefixGatewayFilterFactory、RequestHeaderToRequestUriGatewayFilterFactory�
                   version: v1
      ```
      * 通过拦截 webmvc的``HandlerInterceptor``将request的header保存到ThreadLocal中，以及在``RequestInterceptor``(Feign)做header传递
-     * 在ribbon层实现自己的路由算法``com.xiao.springcloud.webmvc.consumer.loadbalancer.ribbon.NacosWeightedRule``，通过ThreadLocal获取header进行路由
+     * 在ribbon层实现自己的路由算法``com.xiao.springcloud.loadbalancer.ribbon.NacosWeightedRule``，通过ThreadLocal获取header进行路由
      * 客户端针对路由指定负载均衡算法：
      ```yaml
      service_id:

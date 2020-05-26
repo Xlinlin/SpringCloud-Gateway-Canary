@@ -9,12 +9,15 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
+    <module>SpringCloud-Loadbalancer-common</module>
+    <module>SpringCloud-ribbon-nacos</module>
+    <module>SpringCloud-ribbon-eureka</module>
     <module>SpringCloud-Gateway</module>
     <module>SpringCloud-Provider</module>
     <module>SpringCloud-Consumer</module>
-    <module>SpringCloud-Loadbalancer</module>
     <module>SpringCloud-Provider-Webmvc</module>
     <module>SpringCloud-Consumer-Webmvc</module>
+
   </modules>
 
   <properties>
