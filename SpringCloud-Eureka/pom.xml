@@ -9,7 +9,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>SpringCloud-Provider</artifactId>
+  <artifactId>SpringCloud-Eureka</artifactId>
 
   <dependencies>
     <dependency>
@@ -18,30 +18,27 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.cloud</groupId>
-      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+      <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
     </dependency>
   </dependencies>
 
   <build>
-    <finalName>${project.artifactId}-v2100</finalName>
+    <finalName>${project.artifactId}-8888</finalName>
     <resources>
+      <!-- 指定 src/main/resources下所有文件及文件夹为资源文件 -->
       <resource>
-        <targetPath>${project.build.directory}/classes</targetPath>
         <directory>src/main/resources</directory>
-        <filtering>true</filtering>
+        <targetPath>${project.build.directory}/classes</targetPath>
         <includes>
-          <include>**/*.xml</include>
-          <include>**/*.yml</include>
-          <include>**/*.properties</include>
-          <include>META-INF/**</include>
+          <include>**/*</include>
         </includes>
+        <filtering>true</filtering>
       </resource>
     </resources>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>${springboot.version}</version>
         <executions>
           <execution>
             <goals>
@@ -52,4 +49,5 @@
       </plugin>
     </plugins>
   </build>
+
 </project>

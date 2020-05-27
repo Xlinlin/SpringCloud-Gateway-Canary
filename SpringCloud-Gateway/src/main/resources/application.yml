@@ -19,13 +19,13 @@ spring:
   application:
     name: gateway-reactor-gray
   cloud:
-    nacos:
-      #nacos配置中心
-      config:
-        server-addr: localhost:8848
-      #nacos注册中心
-      discovery:
-        server-addr: localhost:8848
+    #nacos:
+    #nacos配置中心
+    #config:
+    #server-addr: localhost:8848
+    #nacos注册中心
+    #discovery:
+    #server-addr: localhost:8848
     gateway:
       discovery:
         locator:
@@ -42,7 +42,30 @@ spring:
         # 路由的ID
         - id: hello-consumer
           # 匹配路由的转发地址
-          uri: grayLb://hello-consumer
+          uri: grayLb://canary-consumer
           # 配置该路由的断言，通过PredicateDefinition类进行接收配置。
           predicates:
             - Path=/hello/**
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+      ## 通过容器指定参数
+      #defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka
+  instance:
+    # 使用docker 编排里面的service name，即定义的service名称
+    #hostname: ${SERVICE_NAME}
+    hostname: localhost
+    ## 元数据
+    metadata-map:
+      version: v1
+      #weight: 10
+    # 使用ip注册
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    #instance-id: ${eureka.instance.hostname}:${server.port}
+    #ip-address: ${eureka.instance.hostname}
+    ## 心跳和续约
+    lease-expiration-duration-in-seconds: 60
+    lease-renewal-interval-in-seconds: 10

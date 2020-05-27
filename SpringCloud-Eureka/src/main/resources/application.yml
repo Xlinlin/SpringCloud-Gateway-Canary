@@ -1,0 +1,19 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+      ## 通过容器指定参数
+      #defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka
+  server:
+    enable-self-preservation: false
+

@@ -17,6 +17,7 @@
     <module>SpringCloud-Consumer</module>
     <module>SpringCloud-Provider-Webmvc</module>
     <module>SpringCloud-Consumer-Webmvc</module>
+    <module>SpringCloud-Eureka</module>
 
   </modules>
 

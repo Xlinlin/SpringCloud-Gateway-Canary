@@ -1,11 +1,11 @@
 package com.xiao.springcloud.gateway.demo.provider.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
 
 /**
- * webflux provider
+ * provider
  *
  * @author xiaolinlin
  * @version 1.0, 2020/5/5 17:52
@@ -14,8 +14,12 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/provider")
 public class ProviderController {
 
+    @Value("${server.port}")
+    private int port;
+
+
     @RequestMapping("/hello")
-    public Mono<String> hell() {
-        return Mono.just("hello provider v1");
+    public String hell() {
+        return "hello provider :" + port;
     }
 }

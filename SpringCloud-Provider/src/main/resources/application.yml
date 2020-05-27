@@ -1,11 +1,28 @@
 server:
-  port: 7082
+  port: 8069
 spring:
   application:
-    name: hello-provider
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-        metadata:
-          version: v1
+    name: canary-provider
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+      ## 通过容器指定参数
+      #defaultZone: http://${EUREKA_HOST}:${EUREKA_PORT}/eureka
+  instance:
+    # 使用docker 编排里面的service name，即定义的service名称
+    #hostname: ${SERVICE_NAME}
+    hostname: localhost
+    ## 元数据
+    metadata-map:
+      version: v2
+      weight: 100
+    # 使用ip注册
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    #instance-id: ${eureka.instance.hostname}:${server.port}
+    #ip-address: ${eureka.instance.hostname}
+    ## 心跳和续约
+    lease-expiration-duration-in-seconds: 60
+    lease-renewal-interval-in-seconds: 10

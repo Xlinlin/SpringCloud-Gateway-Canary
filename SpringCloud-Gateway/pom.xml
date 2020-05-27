@@ -32,21 +32,25 @@
       <optional>true</optional>
     </dependency>
 
-    <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-      <exclusions>
-        <!-- nacos的jar注意排除ribbon依赖，不然loadbalancer无法生效 -->
-        <exclusion>
-          <groupId>org.springframework.cloud</groupId>
-          <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+    <!--    <dependency>-->
+    <!--      <groupId>com.alibaba.cloud</groupId>-->
+    <!--      <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>-->
+    <!--      <exclusions>-->
+    <!--        &lt;!&ndash; nacos的jar注意排除ribbon依赖，不然loadbalancer无法生效 &ndash;&gt;-->
+    <!--        <exclusion>-->
+    <!--          <groupId>org.springframework.cloud</groupId>-->
+    <!--          <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>-->
+    <!--        </exclusion>-->
+    <!--      </exclusions>-->
+    <!--    </dependency>-->
 
+    <!--    <dependency>-->
+    <!--      <groupId>com.alibaba.cloud</groupId>-->
+    <!--      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
+    <!--    </dependency>-->
     <dependency>
-      <groupId>com.alibaba.cloud</groupId>
-      <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+      <groupId>org.springframework.cloud</groupId>
+      <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
     </dependency>
 
     <dependency>
@@ -70,11 +74,32 @@
   </dependencies>
 
   <build>
+    <finalName>${project.artifactId}-9082</finalName>
+    <resources>
+      <resource>
+        <targetPath>${project.build.directory}/classes</targetPath>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*.xml</include>
+          <include>**/*.yml</include>
+          <include>**/*.properties</include>
+          <include>META-INF/**</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <version>2.2.5.RELEASE</version>
+        <version>${springboot.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

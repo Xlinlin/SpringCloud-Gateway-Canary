@@ -114,7 +114,7 @@ public class GrayLoadBalancer implements ReactorServiceInstanceLoadBalancer {
         canUseInstance.forEach(canInstance -> {
             final Map<String, String> metadata = canInstance.getMetadata();
             // nacos上的权重
-            String weight = metadata.get("nacos.weight");
+            String weight = metadata.get("weight");
             System.out.println("ServiceId: " + canInstance.getServiceId() + " Weight: " + weight);
             // 先随机取一个
         });
